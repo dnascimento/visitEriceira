@@ -1,0 +1,39 @@
+<div class="container arrowscarousel red clearfix">
+    <div class="grid_12">
+        <div class="titlesection">
+            <h1>The Delicious Portuguese Food</h1>
+        </div>
+    </div>
+    <!--start arrows carousel-->
+    <div class="grid_6">
+        <div id="showbiz_left_2" class="arrowcarouselprev fade-right"></div>
+    </div>
+    <div class="grid_6">
+        <div id="showbiz_right_2" class="arrowcarouselnext fade-left"></div>
+    </div>
+    <!--end arrows carousel-->
+
+</div>
+<!--end container for arrows-->
+
+<div class="container clearfix showbiz-container">
+    <div class="showbiz" data-left="#showbiz_left_2" data-right="#showbiz_right_2" data-play="#showbiz_play_2">
+        <div class="overflowholder">
+            <ul>
+                <li ng-repeat="dish in dishes">
+                    <div class="destinationcarousel single-carousel">
+                        <img class="imgdestination" ng-src="/modules/core/img/dishes/{{ dish.img }}">
+                        <div class="avatarandtitle">
+                            <div class="avatardestination">
+                                <img alt="" ng-src="/modules/core/img/dishes/sponsors/{{ dish.sponsor }}">
+                            </div>
+                            <p class="titledestination">
+                                <a ng-href="{{ dish.href }}">{{ dish.name }}</a>
+                            </p>
+                        </div>
+                        <p class="descriptiondestination">{{ dish.description }}</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+</div>

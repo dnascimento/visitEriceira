@@ -1,22 +1,9 @@
 <section ng-controller="HomeController">
-	<!--<slider dir="img/slider" speed="5000" slides="['img1.jpg', 'img2.jpg', 'img3.jpg']"/>-->
-	<section id="homeservices" class="sectionhome fade-up">
-		<div class="container clearfix">
-			<div class="grid_4 homeservice" ng-repeat="service in services">
-				<div class="imgserviceopen">
-					<img alt="" ng-src="/modules/core/img/services/service1.png" />
-				</div>
-				<div class="imgservice">
-					<div class="percentagehome" data-percent="{{ service.percentage }}">
-						<img alt="" src="/modules/core/img/services/{{ service.img }}" />
-					</div>
-				</div>
-				<h2><a ng-href="{{ service.href }}">{{ service.title }}</a></h2>
-				<p>{{ service.description }}</p>
-			</div>
-		</div>
-	</section>
-
+	<slider dir="img/slider" speed="10000" slides="['img1.jpg', 'img2.jpg', 'img3.jpg']"></slider>
+	<div ng-include="'/modules/core/views/services.view.html'"></div>
+	<div ng-include="'/modules/core/views/promotions.view.html'"></div>
+	<div class="divider"></div>
+	<div ng-include="'/modules/core/views/food.view.html'"></div>
 </section>
 
 

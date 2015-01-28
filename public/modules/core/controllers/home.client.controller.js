@@ -13,19 +13,15 @@ core.directive('slider',function($interval){
 		},
 
 		controller: function($scope){
-			$scope.currentIndex = 0;
+			$scope.slideIndex = 0;
 			$scope.images = [];
 
-			for(var i = 0; i < $scope.slides.length; i++){
-				$scope.images[i] = { src : $scope.slides[i], visible: false };
-			}
-			$scope.images[$scope.currentIndex].visible = true; // hide current image
+			$scope.images.push({ src : $scope.slides[$scope.slideIndex]});
 
 			$interval(function(){
-				$scope.images[$scope.currentIndex].visible = false; // hide current image
-				$scope.currentIndex = ++$scope.currentIndex % $scope.slides.length;
-				$scope.images[$scope.currentIndex].visible = true; // show next image
-
+				$scope.images = [];
+				$scope.slideIndex = ($scope.slideIndex + 1) % $scope.slides.length;
+				$scope.images.push({ src : $scope.slides[$scope.slideIndex]});
 			},$scope.speed);
 		}
 	};
@@ -44,6 +40,25 @@ core.controller('HomeController',
 				title: 'Surf Ericeira',
 				description: 'world surf reserver'
 		}
+		];
+
+		$scope.promotions = [
+			{
+				href: '#',
+				color: 'red',
+				img: 'drink.png',
+				text: 'Drink <span class="and">&</span> Eat'
+			}
+		];
+
+		$scope.dishes = [
+			{
+				img : 'bacalhau_bras.jpg',
+				sponsor : 'avatar.jpg',
+				href : '#',
+				name : 'Bacalhau à Brás',
+				description: 'codfish'
+			}
 		];
 	}
 );

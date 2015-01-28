@@ -1,0 +1,11 @@
+<div class="sectionhome container clearfix" id="homepromotions">
+
+        <div class="grid_3" ng-repeat="promotion in promotions">
+            <a class="btnpromotion rotate-In-Down-Left animate1" ng-href="{{ promotion.href }}">
+                <p class="{{ promotion.color }}">
+                    <img ng-src="/modules/core/img/promotions/{{ promotion.img }}"/><br>
+                    <span ng-bind-html="promotion.text"></span>
+                </p>
+            </a>
+        </div>
+</div>

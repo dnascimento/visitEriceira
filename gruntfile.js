@@ -7,11 +7,14 @@ module.exports = function(grunt) {
 		serverJS: ['gruntfile.js', 'server.js', 'config/**/*.js', 'app/**/*.js'],
 		clientViews: ['public/modules/**/views/**/*.html'],
 		clientJS: ['public/js/*.js', 'public/modules/**/*.js'],
-		clientCSS: ['public/modules/**/*.css'],
+		clientLess: ['public/modules/**/less/*.less'],
+		clientCSS: ['public/application.min.css', 'public/modules/**/*.css'],
 		mochaTests: ['app/tests/**/*.js']
 	};
 
-	// Project Configuration
+
+
+		// Project Configuration
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 		watch: {
@@ -47,6 +50,13 @@ module.exports = function(grunt) {
 				options: {
 					livereload: true
 				}
+			},
+			clientLess: {
+				files: watchFiles.clientLess,
+				tasks: ['less'],
+				options: {
+					nospawn: true
+				}
 			}
 		},
 		jshint: {
@@ -63,23 +73,6 @@ module.exports = function(grunt) {
 			},
 			all: {
 				src: watchFiles.clientCSS
-			}
-		},
-		uglify: {
-			production: {
-				options: {
-					mangle: false
-				},
-				files: {
-					'public/dist/application.min.js': 'public/dist/application.js'
-				}
-			}
-		},
-		cssmin: {
-			combine: {
-				files: {
-					'public/dist/application.min.css': '<%= applicationCSSFiles %>'
-				}
 			}
 		},
 		nodemon: {
@@ -108,7 +101,7 @@ module.exports = function(grunt) {
 		ngAnnotate: {
 			production: {
 				files: {
-					'public/dist/application.js': '<%= applicationJavaScriptFiles %>'
+					'public/application.js': '<%= applicationJavaScriptFiles %>'
 				}
 			}
 		},
@@ -139,11 +132,34 @@ module.exports = function(grunt) {
 			unit: {
 				configFile: 'karma.conf.js'
 			}
+		},
+		less: {
+			production : {
+				options : {
+					paths : ['public/less'],
+					cleanCss: true,
+					compress: true,
+				},
+				files: [
+					{'public/application.min.css' : ['public/less/application.less','public/modules/**/less/*.less']}
+				]
+			},
+			development : {
+				options : {
+					sourceMap : true,
+					sourceMapURL: '/application.min.css.map',
+					ieCompact : true,
+					dumpLineNumbers: true
+				},
+				files:
+					{'public/application.min.css' : ['public/less/application.less','public/modules/**/less/*.less']}
+			}
 		}
 	});
 
 	// Load NPM tasks
 	require('load-grunt-tasks')(grunt);
+	grunt.loadNpmTasks('grunt-contrib-less');
 
 	// Making grunt default to force in order not to break the project.
 	grunt.option('force', true);
@@ -155,6 +171,8 @@ module.exports = function(grunt) {
 
 		grunt.config.set('applicationJavaScriptFiles', config.assets.js);
 		grunt.config.set('applicationCSSFiles', config.assets.css);
+		grunt.config.set('applicationLessFiles', config.assets.less);
+
 	});
 
 	// Default task(s).
@@ -170,7 +188,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('lint', ['jshint', 'csslint']);
 
 	// Build task(s).
-	grunt.registerTask('build', ['lint', 'loadConfig', 'ngAnnotate', 'uglify', 'cssmin']);
+	grunt.registerTask('build', ['lint', 'loadConfig', 'ngAnnotate', 'less']);
 
 	// Test task.
 	grunt.registerTask('test', ['env:test', 'mochaTest', 'karma:unit']);
