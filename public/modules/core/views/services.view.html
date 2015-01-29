@@ -1,14 +1,18 @@
-<div class="container clearfix" id="homeservices" class="sectionhome fade-up">
-    <div class="grid_4 homeservice" ng-repeat="service in services">
-        <div class="imgserviceopen">
-            <img alt="" ng-src="/modules/core/img/services/service1.png" />
-        </div>
-        <div class="imgservice">
-            <div class="percentagehome" data-percent="{{ service.percentage }}">
-                <img alt="" ng-src="/modules/core/img/services/{{ service.img }}" />
+<div class="sectionhome fade-up" id="homeservices">
+    <div class="container clearfix">
+        <div class="col-md-4" ng-repeat="service in services">
+            <div class="homeservice">
+                <div class="imgserviceopen">
+                    <img alt="" ng-src="/modules/core/img/services/{{ service.imgOpen }}" />
+                </div>
+                <div class="imgservice">
+                    <div easypiechart percent="service.percent" options="options">
+                        <img alt="" ng-src="/modules/core/img/services/{{ service.img }}" />
+                    </div>
+                </div>
+                <h2><a ng-href="{{ service.href }}">{{ service.title }}</a></h2>
+                <p>{{ service.description }}</p>
             </div>
         </div>
-        <h2><a ng-href="{{ service.href }}">{{ service.title }}</a></h2>
-        <p>{{ service.description }}</p>
     </div>
 </div>

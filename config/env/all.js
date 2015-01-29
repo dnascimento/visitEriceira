@@ -16,6 +16,7 @@ module.exports = {
 
 			],
 			js: [
+				'public/lib/angular.easy-pie-chart/dist/angular.easypiechart.min.js',
 				'public/lib/angular/angular.js',
 				'public/lib/angular-resource/angular-resource.js', 
 				'public/lib/angular-cookies/angular-cookies.js', 
@@ -24,11 +25,15 @@ module.exports = {
 				'public/lib/angular-sanitize/angular-sanitize.js', 
 				'public/lib/angular-ui-router/release/angular-ui-router.js',
 				'public/lib/angular-ui-utils/ui-utils.js',
-				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js'
+				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
+				'public/lib/jquery/dist/jquery.min.js',
+				'public/lib/owl-carousel2/dist/owl.carousel.min.js',
 			]
 		},
 		css: [
-			'public/application.min.css'
+			'public/application.min.css',
+			'public/lib/owl-carousel2/dist/assets/owl.carousel.min.css'
+
 		],
 		less: [
 			'public/modules/**/*.less'
