@@ -16,7 +16,8 @@
     "angular-ui-router": "~0.2.11",
     "angular-google-maps": "~2.0.12",
     "owl-carousel2" : "latest",
-    "angular.easy-pie-chart": "latest"
+    "angular.easy-pie-chart": "latest",
+    "angular-google-maps": "~2.0.12"
   }
 }
 
