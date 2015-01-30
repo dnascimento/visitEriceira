@@ -4,7 +4,7 @@
 var ApplicationConfiguration = (function() {
 	// Init module configuration options
 	var applicationModuleName = 'visit-ericeira';
-	var applicationModuleVendorDependencies = ['ngResource', 'ngCookies',  'ngAnimate',  'ngTouch',  'ngSanitize',  'ui.router', 'ui.bootstrap', 'ui.utils', 'uiGmapgoogle-maps'];
+	var applicationModuleVendorDependencies = ['ngResource', 'ngCookies',  'ngAnimate',  'ngTouch',  'ngSanitize',  'ui.router', 'ui.bootstrap', 'ui.utils', 'uiGmapgoogle-maps','easypiechart'];
 
 	// Add a new vertical module
 	var registerModule = function(moduleName, dependencies) {
@@ -21,7 +21,7 @@ var ApplicationConfiguration = (function() {
 		registerModule: registerModule
 	};
 })();
-
+;
 'use strict';
 
 //Start by defining the main module and adding the module dependencies
@@ -42,16 +42,16 @@ angular.element(document).ready(function() {
 	//Then init the app
 	angular.bootstrap(document, [ApplicationConfiguration.applicationModuleName]);
 });
-
+;
 'use strict';
 
 // Use Applicaion configuration module to register a new module
 ApplicationConfiguration.registerModule('core', ['easypiechart']);
-
+;
 'use strict';
 
 // Use Applicaion configuration module to register a new module
-ApplicationConfiguration.registerModule('users');
+ApplicationConfiguration.registerModule('users');;
 'use strict';
 
 // Setting up route
@@ -67,7 +67,7 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 			templateUrl: 'modules/core/views/home.client.view.html'
 		});
 	}
-]);
+]);;
 'use strict';
 
 angular.module('core').controller('HeaderController',
@@ -86,7 +86,7 @@ angular.module('core').controller('HeaderController',
 		});
 	}]
 );
-
+;
 'use strict';
 
 var core = angular.module('core');
@@ -409,7 +409,7 @@ core.controller('HomeController',
 
 	}]
 );
-
+;
 'use strict';
 
 //Menu service used for managing  menus
@@ -575,7 +575,7 @@ angular.module('core').service('Menus', [
 		//Adding the topbar menu
 		this.addMenu('topbar');
 	}
-]);
+]);;
 'use strict';
 
 // Config HTTP Error Handling
@@ -605,7 +605,7 @@ angular.module('users').config(['$httpProvider',
 			}
 		]);
 	}
-]);
+]);;
 'use strict';
 
 // Setting up route
@@ -650,7 +650,7 @@ angular.module('users').config(['$stateProvider',
 			templateUrl: 'modules/users/views/password/reset-password.client.view.html'
 		});
 	}
-]);
+]);;
 'use strict';
 
 angular.module('users').controller('AuthenticationController', ['$scope', '$http', '$location', 'Authentication',
@@ -684,7 +684,7 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 			});
 		};
 	}
-]);
+]);;
 'use strict';
 
 angular.module('users').controller('PasswordController', ['$scope', '$stateParams', '$http', '$location', 'Authentication',
@@ -728,7 +728,7 @@ angular.module('users').controller('PasswordController', ['$scope', '$stateParam
 			});
 		};
 	}
-]);
+]);;
 'use strict';
 
 angular.module('users').controller('SettingsController', ['$scope', '$http', '$location', 'Users', 'Authentication',
@@ -799,7 +799,7 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
 			});
 		};
 	}
-]);
+]);;
 'use strict';
 
 // Authentication service for user variables
@@ -813,7 +813,7 @@ angular.module('users').factory('Authentication', [
 
 		return _this._data;
 	}
-]);
+]);;
 'use strict';
 
 // Users service used for communicating with the users REST endpoint
