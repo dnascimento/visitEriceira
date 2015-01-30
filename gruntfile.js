@@ -1,5 +1,15 @@
 'use strict';
 
+
+/**
+ * CSS: The watch clientLss checks updates on modules less files. Then, invokes the task "less" which compiles all less to 'public/dist/application.css' and to 'public/dist/application.min.css'.
+ * Then the clientCSS watch triggers the csslint to verify the CSS quality
+ *
+ * JS: The clientJS watches the changes on modules JS files and triggers the jshint to verify those files.
+ * When compiled, the ngAnnotate and uglify are invoked and 'public/dist/application.js' and 'public/dist/application.min.js' are generated.
+ *
+ */
+
 module.exports = function(grunt) {
 	// Unified Watch Object
 	var watchFiles = {
@@ -8,7 +18,7 @@ module.exports = function(grunt) {
 		clientViews: ['public/modules/**/views/**/*.html'],
 		clientJS: ['public/js/*.js', 'public/modules/**/*.js'],
 		clientLess: ['public/modules/**/less/*.less'],
-		clientCSS: ['public/application.min.css', 'public/modules/**/*.css'],
+		clientCSS: ['public/dist/application.css'],
 		mochaTests: ['app/tests/**/*.js']
 	};
 
@@ -18,8 +28,27 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 		watch: {
-			serverViews: {
-				files: watchFiles.serverViews,
+			//LESS and CSS:
+			clientLess: {
+				files: watchFiles.clientLess,
+				tasks: ['less'],
+				options: {
+					nospawn: true,
+					livereload: true //reload on change
+				}
+			},
+			clientCSS: {
+				files: watchFiles.clientCSS,
+				tasks: ['csslint'],
+				options: {
+					livereload: true
+				}
+			},
+
+			//JS
+			clientJS: {
+				files: watchFiles.clientJS,
+				tasks: ['jshint'],
 				options: {
 					livereload: true
 				}
@@ -31,35 +60,23 @@ module.exports = function(grunt) {
 					livereload: true
 				}
 			},
+			//views
+			serverViews: {
+				files: watchFiles.serverViews,
+				options: {
+					livereload: true
+				}
+			},
 			clientViews: {
 				files: watchFiles.clientViews,
 				options: {
 					livereload: true,
 				}
-			},
-			clientJS: {
-				files: watchFiles.clientJS,
-				tasks: ['jshint'],
-				options: {
-					livereload: true
-				}
-			},
-			clientCSS: {
-				files: watchFiles.clientCSS,
-				tasks: ['csslint'],
-				options: {
-					livereload: true
-				}
-			},
-			clientLess: {
-				files: watchFiles.clientLess,
-				tasks: ['less'],
-				options: {
-					nospawn: true
-				}
 			}
 		},
-		jshint: {
+
+
+		jshint: {    //Detect JS errors/metrics
 			all: {
 				src: watchFiles.clientJS.concat(watchFiles.serverJS),
 				options: {
@@ -67,15 +84,32 @@ module.exports = function(grunt) {
 				}
 			}
 		},
-		csslint: {
+		csslint: { //Detect CSS errors/metrics
 			options: {
-				csslintrc: '.csslintrc',
+				csslintrc: '.csslintrc'
 			},
 			all: {
 				src: watchFiles.clientCSS
 			}
 		},
-		nodemon: {
+		ngAnnotate: {		//rebuild injections
+			production: {
+				files: {
+					'public/dist/application.js': '<%= applicationJavaScriptFiles %>'
+				}
+			}
+		},
+		uglify: {		//minimize
+			production: {
+				options: {
+					mangle: false
+				},
+				files: {
+					'public/dist/application.min.js': 'public/dist/application.js'
+				}
+			}
+		},
+		nodemon: {	//reboot nodejs when files change
 			dev: {
 				script: 'server.js',
 				options: {
@@ -95,13 +129,6 @@ module.exports = function(grunt) {
 					'no-preload': true,
 					'stack-trace-limit': 50,
 					'hidden': []
-				}
-			}
-		},
-		ngAnnotate: {
-			production: {
-				files: {
-					'public/application.js': '<%= applicationJavaScriptFiles %>'
 				}
 			}
 		},
@@ -136,23 +163,25 @@ module.exports = function(grunt) {
 		less: {
 			production : {
 				options : {
-					paths : ['public/less'],
+					paths : ['public/less'], //minified
 					cleanCss: true,
 					compress: true,
+					yuicompress: true,
+					optimization: 2
 				},
 				files: [
-					{'public/application.min.css' : ['public/less/application.less','public/modules/**/less/*.less']}
+					{'public/dist/application.min.css' : ['public/less/application.less','public/modules/**/less/*.less']}
 				]
 			},
 			development : {
 				options : {
 					sourceMap : true,
-					sourceMapURL: '/application.min.css.map',
+					sourceMapURL: '/dist/application.css.map',
 					ieCompact : true,
 					dumpLineNumbers: true
 				},
 				files:
-					{'public/application.min.css' : ['public/less/application.less','public/modules/**/less/*.less']}
+					{'public/dist/application.css' : ['public/less/application.less','public/modules/**/less/*.less']}
 			}
 		}
 	});
@@ -188,7 +217,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('lint', ['jshint', 'csslint']);
 
 	// Build task(s).
-	grunt.registerTask('build', ['lint', 'loadConfig', 'ngAnnotate', 'less']);
+	grunt.registerTask('build', ['lint', 'loadConfig', 'ngAnnotate', 'less', 'uglify']);
 
 	// Test task.
 	grunt.registerTask('test', ['env:test', 'mochaTest', 'karma:unit']);

@@ -13,7 +13,7 @@ module.exports = {
 	assets: {
 		lib: {
 			css: [
-
+				'public/lib/owl-carousel2/dist/assets/owl.carousel.min.css'
 			],
 			js: [
 				'public/lib/angular.easy-pie-chart/dist/angular.easypiechart.min.js',
@@ -28,12 +28,12 @@ module.exports = {
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
 				'public/lib/jquery/dist/jquery.min.js',
 				'public/lib/owl-carousel2/dist/owl.carousel.min.js',
+				'public/lib/lodash/dist/lodash.min.js',
+				'public/lib/angular-google-maps/dist/angular-google-maps.min.js'
 			]
 		},
 		css: [
-			'public/application.min.css',
-			'public/lib/owl-carousel2/dist/assets/owl.carousel.min.css'
-
+			'public/dist/application.css',
 		],
 		less: [
 			'public/modules/**/*.less'

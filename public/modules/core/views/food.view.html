@@ -7,12 +7,26 @@
 </div>
 <div class="container clearfix">
     <div has-owl-carousel>
-        <div class="owl-carousel owl-theme">
-            <div class="calendar-date" ng-repeat="dish in dishes">
-                <div class="item"><img class="lazyOwl" ng-src="/modules/core/img/dishes/{{ dish.img }}" alt="Lazy Owl Image"></div>
+        <div class="owl-carousel owl-theme show-biz">
+            <div class="item" ng-repeat="dish in dishes">
+                <img alt="" class="show-biz-main-img" ng-src="/modules/core/img/dishes/{{ dish.img }}">
+                <div class="show-biz-title">
+                    <div class="avatar">
+                        <img alt="" ng-src="/modules/core/img/dishes/sponsors/{{ dish.sponsor }}">
+                    </div>
+                    <p>
+                        <a ng-href="{{ dish.href }}">{{ dish.name }}</a>
+                    </p>
+                </div>
+                <p class="description">{{ dish.description }}</p>
             </div>
+            <!--<img class="lazyOwl" ng-src="/modules/core/img/dishes/{{ dish.img }}" alt="Lazy Owl Image">-->
         </div>
-        <div class="arrow-prev animated fadeInRight" ng-click="prev()"></div>
-        <div class="arrow-next animated fadeInLeft" ng-click="next()"></div>
+        <div class="col-md-6">
+            <div class="arrow-prev animated fadeInRight" ng-click="prev()"></div>
+        </div>
+        <div class="col-md-6">
+            <div class="arrow-next animated fadeInLeft" ng-click="next()"></div>
+        </div>
     </div>
 </div>

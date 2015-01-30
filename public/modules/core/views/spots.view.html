@@ -1,0 +1,56 @@
+<div class="container clearfix">
+    <div class="grid_12">
+        <div class="titlesection">
+            <h1>Surf Spots</h1>
+        </div>
+    </div>
+
+
+    <div style="100%; height:500px" class="col-md-2">
+        <ui-gmap-google-map center='map.center' zoom='map.zoom' options="map.options">
+            <ui-gmap-markers models="randomMarkers" coords="'self'" icon="'icon'" click="'onClick'">
+                <!--<ui-gmap-windows show="{{ show }}">-->
+                    <!--<div ng-non-bindable>{{title}}</div>-->
+                <!--</ui-gmap-windows>-->
+            </ui-gmap-markers>
+
+        </ui-gmap-google-map>
+    </div>
+
+
+    <div class="col-md-10">
+        <div class="hometour hometour-0 blue fade-down animate1" >
+            <div class="tophometour">
+                <p class="titlehometour" ng-if="wave === undefined">Choose a spot in the map</p>
+                <p class="titlehometour" ng-if="wave != undefined">{{ wave.name }}</p>
+                <div class="titleimghometour" ng-if="wave != undefined">
+                    <img alt="" class="imghometour" ng-src="/modules/core/img/spots/{{ wave.img }}">
+                </div>
+                <div class="datedescriptionhometour" ng-if="wave != undefined">
+                    <div class="descriptionhometour">
+                        {{ wave.description }}
+                    </div>
+                </div>
+            </div>
+            <!--start bottomhometour-->
+            <div class="bottomhometour" ng-if="wave != undefined">
+
+                <!--start listhometour-->
+                <div class="listhometour">
+                    <ul>
+                        <li ng-repeat="(key, value) in wave.type">
+                            <p><span class="bulletlisthometour"></span><b>{{ key }}: </b>{{ value }}</p>
+                        </li>
+                    </ul>
+                </div>
+                <!--end listhometour-->
+
+            </div>
+            <!--end bottomhometour-->
+
+        </div>
+        <!--END HOME TOUR-->
+
+    </div>
+    <!--end grid-->
+</div>
