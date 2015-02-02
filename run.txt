@@ -1,0 +1,5 @@
+sudo apt-get install nodejs npm nodejs-legacy mongodb
+sudo npm install -g bower grunt-cli --save
+npm install
+#npm install ng-annotate grunt-ng-annotate karma grunt-karma socket.io --save
+#npm install bson --save
