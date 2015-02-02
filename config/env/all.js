@@ -38,6 +38,7 @@ module.exports = {
 		},
 		css: [
 			'public/dist/application.css',
+			'public/lib/fancybox/source/jquery.fancybox.css',
 			'public/lib/fancybox/source/helpers/jquery.fancybox-thumbs.css',
 		],
 		less: [

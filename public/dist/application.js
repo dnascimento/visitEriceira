@@ -434,22 +434,25 @@ core.directive('gallery',function(){
                 $scope.selectedFilter = $selectedFilter;
 
             }
-        }],
-        link: function($scope, element) {
-            $(element).children('.fancybox-thumb').fancybox({
-                prevEffect	: 'none',
-                nextEffect	: 'none',
-                helpers	: {
-                    title	: {
-                        type: 'outside'
-                    },
-                    thumbs	: {
-                        width	: 50,
-                        height	: 50
+
+            $scope.openFancyBox = function () {
+                $('.fancybox-thumbs').fancybox({
+                    prevEffect : 'none',
+                    nextEffect : 'none',
+
+                    closeBtn  : true,
+                    arrows    : true,
+                    nextClick : true,
+
+                    helpers : {
+                        thumbs : {
+                            width  : 50,
+                            height : 50
+                        }
                     }
-                }
-            });
-        }
+                });
+            }
+        }]
     };
 });
 ;
