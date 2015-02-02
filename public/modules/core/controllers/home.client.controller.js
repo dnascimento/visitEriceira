@@ -246,6 +246,17 @@ core.controller('HomeController',
 		};
 
 
+		$scope.filters = ['ALL', 'Surf', 'Ericeira', 'Nearby'];
+
+		$scope.gallery = [
+			{img: 'img1.jpg', title:'Surf 1', filter: 'Surf'},
+			{img: 'img2.jpg', title:'Surf 1', filter: 'Surf'},
+			{img: 'img3.jpg', title:'Ericeira 1', filter: 'Ericeira'},
+			{img: 'img4.jpg', title:'Ericeira 2', filter: 'Ericeira'},
+			{img: 'img5.jpg', title:'Nearby 1', filter: 'Nearby'},
+			{img: 'img6.jpg', title:'Nearby 2', filter: 'Nearby'},
+		]
+
 
 	}
 );

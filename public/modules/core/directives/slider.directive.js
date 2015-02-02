@@ -37,7 +37,6 @@ core.directive('slider',function($interval,$window){
                 var naturalHeight = $(element).attr("height");
 
                 var newHeight = Math.round(windowWidth * (naturalHeight/naturalWidth));
-                console.log(newHeight);
                 $(element).height(newHeight);
             };
 

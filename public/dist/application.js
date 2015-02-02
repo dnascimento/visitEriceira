@@ -4,7 +4,7 @@
 var ApplicationConfiguration = (function() {
 	// Init module configuration options
 	var applicationModuleName = 'visit-ericeira';
-	var applicationModuleVendorDependencies = ['ngResource', 'ngCookies',  'ngAnimate',  'ngTouch',  'ngSanitize',  'ui.router', 'ui.bootstrap', 'ui.utils', 'uiGmapgoogle-maps','easypiechart','wu.masonry','duScroll'];
+	var applicationModuleVendorDependencies = ['ngResource', 'ngCookies',  'ngAnimate',  'ngTouch',  'ngSanitize',  'ui.router', 'ui.bootstrap', 'ui.utils', 'uiGmapgoogle-maps','easypiechart','duScroll','akoenig.deckgrid'];
 
 	// Add a new vertical module
 	var registerModule = function(moduleName, dependencies) {
@@ -335,6 +335,17 @@ core.controller('HomeController',
 		};
 
 
+		$scope.filters = ['ALL', 'Surf', 'Ericeira', 'Nearby'];
+
+		$scope.gallery = [
+			{img: 'img1.jpg', title:'Surf 1', filter: 'Surf'},
+			{img: 'img2.jpg', title:'Surf 1', filter: 'Surf'},
+			{img: 'img3.jpg', title:'Ericeira 1', filter: 'Ericeira'},
+			{img: 'img4.jpg', title:'Ericeira 2', filter: 'Ericeira'},
+			{img: 'img5.jpg', title:'Nearby 1', filter: 'Nearby'},
+			{img: 'img6.jpg', title:'Nearby 2', filter: 'Nearby'},
+		]
+
 
 	}]
 );
@@ -394,6 +405,58 @@ core.directive('hasOwlCarousel', function() {
 
 var core = angular.module('core');
 
+core.filter('galleryFilter',function() {
+    return function (items, filter) {
+        if(filter == 'ALL'){
+            return items;
+        }
+        return items.filter(function(item){
+            return item.filter === filter;
+        });
+    }
+});
+
+core.directive('gallery',function(){
+    return{
+        restrict : 'AE', //attribute element
+        replace: true,
+        templateUrl: '/modules/core/views/gallery.view.html',
+        scope: {
+            filters: '=',
+            album: '='
+        },
+
+        controller: ["$scope", "$filter", function($scope,$filter){
+            $scope.selectedFilter = $scope.filters[0];
+
+
+            $scope.selectFilter = function($selectedFilter){
+                $scope.selectedFilter = $selectedFilter;
+
+            }
+        }],
+        link: function($scope, element) {
+            $(element).children('.fancybox-thumb').fancybox({
+                prevEffect	: 'none',
+                nextEffect	: 'none',
+                helpers	: {
+                    title	: {
+                        type: 'outside'
+                    },
+                    thumbs	: {
+                        width	: 50,
+                        height	: 50
+                    }
+                }
+            });
+        }
+    };
+});
+;
+'use strict';
+
+var core = angular.module('core');
+
 
 core.directive('slider',["$interval", "$window", function($interval,$window){
     return{
@@ -429,7 +492,6 @@ core.directive('slider',["$interval", "$window", function($interval,$window){
                 var naturalHeight = $(element).attr("height");
 
                 var newHeight = Math.round(windowWidth * (naturalHeight/naturalWidth));
-                console.log(newHeight);
                 $(element).height(newHeight);
             };
 

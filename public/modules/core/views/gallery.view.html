@@ -1,0 +1,21 @@
+<div>
+    <div class="container clear-fix">
+        <ul filters id="filters" class="col-md-12">
+            <li ng-repeat="filter in filters">
+                <span ng-class="{selected: selectedFilter === filter}" ng-click="selectFilter(filter)" >{{ filter }}</span></li>
+            </li>
+        </ul>
+    </div>
+
+    <div id="gallery"   class="container">
+        <div class="col-md-3 col-lg-2 col-sm-6 col-xs-12 photo" ng-repeat="photo in album | galleryFilter : selectedFilter">
+            <div class="fancybox-thumbs" ng-click="openFancyBox()" href="/modules/core/img/gallery/big/{{ photo.img }}">
+                <div class="btngallery rotate red"></div>
+            </div>
+            <img alt="" ng-src="/modules/core/img/gallery/small/{{ photo.img }}">
+            <div class="title">
+                <p>{{ photo.title }}<span class="bullet red"></span></p>
+            </div>
+        </div>
+    </div>
+</div>

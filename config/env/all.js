@@ -30,12 +30,15 @@ module.exports = {
 				'public/lib/lodash/dist/lodash.min.js',
 				'public/lib/angular-google-maps/dist/angular-google-maps.min.js',
 				'public/lib/angular.easy-pie-chart/dist/angular.easypiechart.min.js',
-				'public/lib/angular-masonry/angular-masonry.js',
-				'public/lib/angular-scroll/angular-scroll.min.js'
+				'public/lib/angular-scroll/angular-scroll.min.js',
+				'public/lib/angular-deckgrid/angular-deckgrid.js',
+				'public/lib/fancybox/source/jquery.fancybox.js',
+				'public/lib/fancybox/source/helpers/jquery.fancybox-thumbs.js',
 			]
 		},
 		css: [
 			'public/dist/application.css',
+			'public/lib/fancybox/source/helpers/jquery.fancybox-thumbs.css',
 		],
 		less: [
 			'public/modules/**/*.less'
