@@ -1,108 +1,123 @@
 @import "public/less/variables.less";
 
-#homeprices{
-  float:left;
-  width:100%;
-}
-.price{
-  background-color:#fff;
-  text-align:center;
-  float:left;
-  width:100%;
+#travel-packs{
+  .pack{
+    background-color: white;
+    text-align:center;
+    float:left;
+    -webkit-box-shadow: inset 0px 0px 0px 1px #F4F4F6;
+    box-shadow: inset 0px 0px 0px 1px #F4F4F6;
 
-  -webkit-box-shadow: inset 0px 0px 0px 1px #F4F4F6;
-  box-shadow: inset 0px 0px 0px 1px #F4F4F6;
+    .title{
+      color:#b1bac3;
+      padding:20px 0px;
+      background-color:#344A5F;
+    }
+
+    .value{
+      background-color: @yellow;
+      padding:10px 0px;
+      background-image:url(/modules/core/img/packs/filter.png);
+      background-repeat:no-repeat;
+      background-position:right;
+
+      &:hover{
+        -webkit-transform:scale(1.05, 1.05);
+        -o-transform:scale(1.05, 1.05);
+        transform:scale(1.05, 1.05);
+      }
+      span{
+        font-size:20px;
+        vertical-align:middle;
+
+
+      }
+
+      .description{
+        font-size:15px !important;
+      }
+
+      p{
+        color:#FFF;
+        font-size:50px;
+      }
+    }
+
+    .triangle{
+      border-top: 10px solid @yellow;
+      border-top: 10px solid @yellow;
+      width: 0;
+      height: 0;
+      line-height: 0px;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      margin:0px auto;
+    }
+
+    ul{
+      float:left;
+      width:100%;
+      margin:10px 0px;
+      padding:0px;
+      list-style:none;
+      text-align:center;
+
+      li{
+        border-bottom:1px solid #EBEEF2;
+
+        p{
+          margin:10px 0px;
+          font-size:15px;
+        }
+      }
+    }
+
+    .footer{
+      float:right;
+      width:100%;
+      background-color:#f9fafc;
+
+      -webkit-box-shadow: inset 0px 0px 0px 1px rgba(244, 244, 246, 1.0);
+      box-shadow: inset 0px 0px 0px 1px rgba(244, 244, 246, 1.0);
+
+      .contact, .more{
+        width:50%;
+        float:left;
+        text-align:center;
+        border-bottom:1px solid #f4f4f6;
+        border-top:1px solid #f4f4f6;
+        -webkit-box-shadow: inset -1px 0px 0px 0px rgba(244, 244, 246, 1.0);
+        box-shadow: inset -1px 0px 0px 0px rgba(244, 244, 246, 1.0);
+
+
+        a{
+          color:#888;
+        }
+
+        span{
+          margin:15px 0px;
+          display:inline-block;
+          font-size:15px;
+
+          img{
+            vertical-align: baseline;
+            margin-right: 15px;
+          }
+        }
+      }
+    }
+  }
 }
 
 
-.yellow .valueprice{
-  background-color: @yellow;
-}
 
-.yellow .triangle{
-  border-top: 10px solid @yellow;
-}
 
-.priceevidence
-{
-  -webkit-transform:scale(1.05, 1.05);
-  -o-transform:scale(1.05, 1.05);
-  transform:scale(1.05, 1.05);
-}
-.price ul{
-  float:left;
-  width:100%;
-  margin:10px 0px;
-  padding:0px;
-  list-style:none;
-  text-align:center;
-}
-.price ul li{
-  border-bottom:1px solid #EBEEF2;
-}
-.price ul li p{
-  margin:10px 0px;
-  font-size:15px;
-}
-.titleprice{
-  color:#b1bac3;
-  padding:20px 0px;
-  background-color:#344A5F;
-}
-.triangle{
-  width: 0;
-  height: 0;
-  line-height: 0px;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-top: 10px solid #2A94D6;
-  margin:0px auto;
-}
-.descriptionprice{
-  font-size:15px !important;
-}
-.valueprice{
-  padding:10px 0px;
 
-  background-image:url(/modules/core/img/packs/filter.png);
-  background-repeat:no-repeat;
-  background-position:right;
-}
-.valueprice p{
-  color:#FFF;
-  font-size:50px;
-}
-.valueprice p .currency, .valueprice p .littledescription{
-  font-size:20px;
-  vertical-align:middle;
-}
 
-.footerhomeprices{
-  float:right;
-  width:100%;
-  background-color:#f9fafc;
 
-  -webkit-box-shadow: inset 0px 0px 0px 1px rgba(244, 244, 246, 1.0);
-  box-shadow: inset 0px 0px 0px 1px rgba(244, 244, 246, 1.0);
-}
-.footerhomeprices a{
-  color:#888;
-}
 
-.contacthomeprice, .morehomeprice{
-  width:50%;
-  float:left;
-  text-align:center;
-}
 
-.contacthomeprice, .morehomeprice{
-  border-bottom:1px solid #f4f4f6;
-  border-top:1px solid #f4f4f6;
-  -webkit-box-shadow: inset -1px 0px 0px 0px rgba(244, 244, 246, 1.0);
-  box-shadow: inset -1px 0px 0px 0px rgba(244, 244, 246, 1.0);
-}
-.contacthomeprice span, .morehomeprice span{
-  margin:15px 0px;
-  display:inline-block;
-  font-size:15px;
-}
+
+
+
+

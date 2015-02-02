@@ -4,7 +4,7 @@
 var ApplicationConfiguration = (function() {
 	// Init module configuration options
 	var applicationModuleName = 'visit-ericeira';
-	var applicationModuleVendorDependencies = ['ngResource', 'ngCookies',  'ngAnimate',  'ngTouch',  'ngSanitize',  'ui.router', 'ui.bootstrap', 'ui.utils', 'uiGmapgoogle-maps','easypiechart'];
+	var applicationModuleVendorDependencies = ['ngResource', 'ngCookies',  'ngAnimate',  'ngTouch',  'ngSanitize',  'ui.router', 'ui.bootstrap', 'ui.utils', 'uiGmapgoogle-maps','easypiechart','wu.masonry','duScroll'];
 
 	// Add a new vertical module
 	var registerModule = function(moduleName, dependencies) {
@@ -100,80 +100,6 @@ core.config(["uiGmapGoogleMapApiProvider", function(uiGmapGoogleMapApiProvider) 
 	});
 }]);
 
-core.directive('slider',["$interval", function($interval){
-	return{
-		restrict : 'AE', //attribute element
-		replace: true,
-		templateUrl: '/modules/core/views/slider.view.html',
-		scope: {
-			slides: '=',
-			speed: '@'
-		},
-
-		controller: ["$scope", function($scope){
-			$scope.slideIndex = 0;
-			$scope.images = [];
-
-			$scope.images.push({ src : $scope.slides[$scope.slideIndex]});
-
-			$interval(function(){
-				$scope.images = [];
-				$scope.slideIndex = ($scope.slideIndex + 1) % $scope.slides.length;
-				$scope.images.push({ src : $scope.slides[$scope.slideIndex]});
-			},$scope.speed);
-		}]
-	};
-}]);
-
-
-
-core.directive('hasOwlCarousel', function() {
-	return {
-		restrict: 'A',
-		link: function($scope, $element) {
-			$scope.$watch('dishes', function(value) {
-				$scope.owl = $($element).children('.owl-carousel').owlCarousel({
-					lazyLoad: true,
-					loop: false,
-					margin: 15,
-					nav:false,
-					responsiveClass:true,
-					responsive:{
-						0:{ items:1},
-						600:{ items:3 },
-						1000:{items:4}
-					}
-				});
-
-				$scope.next = function(){
-					$scope.owl.trigger('next.owl.carousel');
-				};
-
-				$scope.prev = function(){
-					$scope.owl.trigger('prev.owl.carousel');
-				};
-			});
-		}
-	};
-});
-
-
-core.directive('bannerSponsors', function(){
-	return  {
-		restrict: 'E',
-		replace: true,
-		templateUrl: '/modules/core/views/sponsors.view.html',
-		scope:{
-			sponsors : '='
-		}
-	};
-});
-
-
-
-
-
-
 
 
 core.controller('HomeController',
@@ -182,7 +108,7 @@ core.controller('HomeController',
 		$scope.authentication = Authentication;
 
 
-		//service - start
+		//service (3 round balls) - start
 		$scope.percent = 65;
 		$scope.options = {
 			size: 140,
@@ -195,99 +121,102 @@ core.controller('HomeController',
 			lineCap: 'butt'
 		};
 
+		var servicesDir = '/modules/core/img/services/';
 		$scope.services = [
 			{
 				percent: 90,
-				img : 'service1.png',
-				imgOpen : 'service1open.jpg',
-				href: 'http://google.com',
+				img : servicesDir+'service1.png',
+				imgOpen : servicesDir+'service1open.jpg',
+				href: '#surf_lessons',
 				title: 'Surf',
 				description: '7 Waves in the 2nd World Surf Reserve'
 			},
 			{
 				percent: 80,
-				img : 'service2.png',
-				imgOpen : 'service2open.jpg',
-				href: 'http://google.com',
+				img : servicesDir+'service2.png',
+				imgOpen : servicesDir+'service2open.jpg',
+				href: '#spots',
 				title: 'Beach',
 				description: '11 Beaches within 5km'
 			},
 			{
 				percent: 65,
-				img : 'service3.png',
-				imgOpen : 'service3open.jpg',
-				href: 'http://google.com',
+				img : servicesDir+'service3.png',
+				imgOpen : servicesDir+'service3open.jpg',
+				href: '#food',
 				title: 'Food',
 				description: 'Fresh Fish and Seafruits'
 			}
 		];
-
 		// service - end
 
-		$scope.promotions = [
+
+		var menuImgDir = '/modules/core/img/menu/';
+		$scope.menu = [
 			{
-				href: '#',
+				href: '#food',
 				color: 'red',
-				img: 'drink.png',
+				img: menuImgDir+'drink.png',
 				text: 'Drink <span class="and">&</span> Eat'
 			},
 			{
-				href: '#',
+				href: '#surf_lessons',
 				color: 'blue',
-				img: 'surfist.png',
+				img: menuImgDir+'surfist.png',
 				text: 'Fun'
 			},
 			{
-				href: '#',
+				href: '#housing',
 				color: 'yellow',
-				img: 'sleep.png',
+				img: menuImgDir+'sleep.png',
 				text: 'Sleep'
 			},
 			{
-				href: '#',
+				href: '#guide',
 				color: 'green',
-				img: 'map.png',
+				img: menuImgDir+'map.png',
 				text: 'Getting here'
 			}
 		];
 
 
-
+		var dishesDir = '/modules/core/img/dishes/';
+		var dishesDirSponsors = '/modules/core/img/dishes/sponsors/';
 		$scope.dishes = [
 			{
-				img : 'bacalhau_bras.jpg',
-				sponsor : 'avatar.jpg',
+				img : dishesDir+'bacalhau_bras.jpg',
+				sponsor : dishesDirSponsors+'avatar.jpg',
 				href : '#',
 				name : 'Bacalhau à Brás',
-				description: 'codfish'
+				description: 'É um facto estabelecido de que um leitor é distraído pelo conteúdo legível de uma página quando analisa a sua mancha gráfica. Logo, o uso de Lorem Ipsum leva a uma distribuição '
 			},
 			{
-				img : 'pastel.jpg',
-				sponsor : 'avatar.jpg',
+				img : dishesDir+'pastel.jpg',
+				sponsor : dishesDirSponsors+'avatar.jpg',
 				href : '#',
 				name : 'Bacalhau à Brás',
-				description: 'codfish'
+				description: 'É um facto estabelecido de que um leitor é distraído pelo conteúdo legível de uma página quando analisa a sua mancha gráfica. Logo, o uso de Lorem Ipsum leva a uma distribuição '
 			},
 			{
-				img : 'sardinhas.jpg',
-				sponsor : 'avatar.jpg',
+				img : dishesDir+'sardinhas.jpg',
+				sponsor : dishesDirSponsors+'avatar.jpg',
 				href : '#',
 				name : 'Bacalhau à Brás',
-				description: 'codfish'
+				description: 'É um facto estabelecido de que um leitor é distraído pelo conteúdo legível de uma página quando analisa a sua mancha gráfica. Logo, o uso de Lorem Ipsum leva a uma distribuição '
 			},
 			{
-				img : 'sopa_rica.jpg',
-				sponsor : 'avatar.jpg',
+				img : dishesDir+'sopa_rica.jpg',
+				sponsor : dishesDirSponsors+'avatar.jpg',
 				href : '#',
 				name : 'Bacalhau à Brás',
-				description: 'codfish'
+				description: 'É um facto estabelecido de que um leitor é distraído pelo conteúdo legível de uma página quando analisa a sua mancha gráfica. Logo, o uso de Lorem Ipsum leva a uma distribuição '
 			},
 			{
-				img : 'bacalhau_bras.jpg',
-				sponsor : 'avatar.jpg',
+				img : dishesDir+'bacalhau_bras.jpg',
+				sponsor : dishesDirSponsors+'avatar.jpg',
 				href : '#',
 				name : 'Bacalhau à Brás',
-				description: 'codfish'
+				description: 'É um facto estabelecido de que um leitor é distraído pelo conteúdo legível de uma página quando analisa a sua mancha gráfica. Logo, o uso de Lorem Ipsum leva a uma distribuição '
 			}
 		];
 
@@ -351,7 +280,7 @@ core.controller('HomeController',
 		// uiGmapGoogleMapApi is a promise.
 		// The "then" callback function provides the google.maps object.
 		uiGmapGoogleMapApi.then(function(maps) {
-			$scope.map = { center: { latitude: 38.99, longitude: -9.4223438 }, zoom: 13 , options: { mapTypeId: google.maps.MapTypeId.SATELLITE }};
+			$scope.map = { center: { latitude: 38.99, longitude: -9.4223438 }, zoom: 13 , options: { mapTypeId: google.maps.MapTypeId.SATELLITE, scrollwheel: false, draggable:false}};
 			$scope.randomMarkers = [];
 
 			var markers = [];
@@ -409,6 +338,109 @@ core.controller('HomeController',
 
 	}]
 );
+;
+'use strict';
+
+var core = angular.module('core');
+
+core.directive('bannerSponsors', function(){
+    return  {
+        restrict: 'E',
+        replace: true,
+        templateUrl: '/modules/core/views/sponsors.view.html',
+        scope:{
+            sponsors : '='
+        }
+    };
+});
+
+;
+'use strict';
+
+var core = angular.module('core');
+
+
+core.directive('hasOwlCarousel', function() {
+    return {
+        restrict: 'A',
+        link: function($scope, $element) {
+            $scope.$watch('dishes', function(value) {
+                $scope.owl = $($element).children('.owl-carousel').owlCarousel({
+                    lazyLoad: true,
+                    loop: false,
+                    margin: 15,
+                    nav:false,
+                    responsiveClass:true,
+                    responsive:{
+                        0:{ items:1},
+                        600:{ items:3 },
+                        1000:{items:4}
+                    }
+                });
+
+                $scope.next = function(){
+                    $scope.owl.trigger('next.owl.carousel');
+                };
+
+                $scope.prev = function(){
+                    $scope.owl.trigger('prev.owl.carousel');
+                };
+            });
+        }
+    };
+});
+;
+'use strict';
+
+var core = angular.module('core');
+
+
+core.directive('slider',["$interval", "$window", function($interval,$window){
+    return{
+        restrict : 'AE', //attribute element
+        replace: true,
+        templateUrl: '/modules/core/views/slider.view.html',
+        scope: {
+            slides: '=',
+            speed: '@',
+            dir : '@'
+        },
+
+        controller: ["$scope", function($scope){
+            $scope.slideIndex = 0;
+            $scope.images = [];
+            //add first image
+            $scope.images.push({ src : $scope.dir + $scope.slides[$scope.slideIndex]});
+
+            //set interval to load next image
+            $interval(function(){
+                $scope.images = [];
+                $scope.slideIndex = ($scope.slideIndex + 1) % $scope.slides.length;
+                $scope.images.push({ src : $scope.dir + $scope.slides[$scope.slideIndex]});
+            },$scope.speed);
+        }],
+        link: function ($scope,element,attrs){
+
+            var resize = function(windowWidth) {
+                if($(element).children().length == 0){
+                    return 0;
+                }
+                var naturalWidth = $(element).attr("width");
+                var naturalHeight = $(element).attr("height");
+
+                var newHeight = Math.round(windowWidth * (naturalHeight/naturalWidth));
+                console.log(newHeight);
+                $(element).height(newHeight);
+            };
+
+            resize();
+
+            $scope.$watch(function(){
+                return $window.innerWidth;
+            }, resize);
+        }
+    };
+}]);
 ;
 'use strict';
 

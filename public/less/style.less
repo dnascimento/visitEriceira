@@ -1,3 +1,6 @@
+@import "variables.less";
+@import "mixins.less";
+
 /* Font */
 body, h1, h2, h3, h4{
   font-family: 'Handlee', cursive;
@@ -11,7 +14,7 @@ body{
 
 
 
-p, span.and, .rightsearchopen input[type='text'], .newsletterfooter input[type="text"], input[type="text"], textarea, input[type="submit"], .contactform input[type="text"], .contactform input[type="submit"], .contactform textarea{
+p, span, span.and, .rightsearchopen input[type='text'], .newsletterfooter input[type="text"], input[type="text"], textarea, input[type="submit"], .contactform input[type="text"], .contactform input[type="submit"], .contactform textarea{
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -103,10 +106,34 @@ a img{
 
 
 
-.titlesection{
-  text-align:center;
-  padding:0px 0px 40px 0px;
+.titlesection {
+  text-align: center;
+  padding: 0px 0px 40px 0px;
+
 }
+
 .titlesection h4{
   margin-top:10px;
 }
+
+.titlesection h1{
+  @media only screen and (max-width: @screen-sm-max) {
+    font-size: 20px;
+  }
+}
+
+.bullet.red, .red .bullet{
+  .bullet(@red)
+}
+
+.bullet.green, .green .bullet{
+  .bullet(@green)
+}
+
+
+.bullet.yellow, .yellow .bullet{
+  .bullet(@yellow)
+}
+
+
+

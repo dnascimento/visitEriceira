@@ -1,69 +1,79 @@
-#homeservices{
-  background-color: #344A5F;
+@import "public/less/variables.less";
+@import "public/less/mixins.less";
+@import "public/lib/bootstrap/less/variables.less";
+
+#services{
+  background-color: @blueBackground;
   display: block;
 }
 
 .homeservice{
   margin-top:0px !important;
   margin-bottom:0px !important;
-  border-top:4px solid #55738f;
+  border-top:4px solid @blueBackground;
   text-align:center;
   height: 100%;
 
-  -webkit-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  -ms-transition: all 0.5s ease;
-  transition: all 0.5s ease;
+  .ease(0.5s);
+
+  &:hover{
+    background-color:@lightGray;
+    .boxGlow(@dirtyWhite);
+
+    h2{
+      color:@blueBackground !important;
+    }
+  }
+
+  h2, p, a{
+    color: @dirtyWhite;
+    .ease(0.5s);
+  }
+
+  a:hover{
+    color: @hoverBlue;
+  }
+
+  p{
+    font-size:15px;
+    margin:10px 0px 20px 0px;
+  }
+
+  h2{
+    margin-top:20px;
+    display:inline-block;
+  }
+
 }
 
 
-
-.homeservice h2, .homeservice p{
-  color:#b3bbc6;
-
-  -webkit-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  -ms-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-}
-.homeservice a{
-  color:#b3bbc6;
-
-  -webkit-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  -ms-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-}
-.homeservice a:hover{
-  color: #5e6d81;
-}
-
-.homeservice:hover{
-  background-color:#f9fafc;
-  -moz-box-shadow: 0 0px 10px #B3BBC6;
-  -webkit-box-shadow: 0 0px 10px #B3BBC6;
-  box-shadow: 0 0px 10px #B3BBC6;
-}
-.homeservice:hover h2{
-  color:#5e6d81 !important;
-}
-.homeservice p{
-  font-size:15px;
-  margin:10px 0px 20px 0px;
-}
-.homeservice h2{
-  margin-top:20px;
-  display:inline-block;
-}
 .imgservice{
   width:100%;
   float:left;
   z-index:999;
   margin-top:-70px;
+
+  canvas{
+    z-index:98;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    position:absolute;
+    left:0;
+    top:0;
+  }
+
+  div{
+    position:relative;
+    z-index:98;
+    margin:auto;
+  }
 }
+
+
+
+
 .imgserviceopen{
   width:100%;
   float:left;
@@ -72,21 +82,18 @@
   margin-top:-4px;
   opacity:0;
   -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  .ease(0.5s);
 
-  -webkit-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  -ms-transition: all 0.5s ease;
-  transition: all 0.5s ease;
+  img{
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:0;
+  }
 }
-.imgserviceopen img{
-  position:absolute;
-  bottom:0;
-  left:0;
-  width:100%;
-  height:0;
 
-}
+
 .homeservice:hover .imgserviceopen{
   opacity:1;
   -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
@@ -96,22 +103,12 @@
 .homeservice:hover .imgserviceopen img{
   height:auto;
 }
-canvas{
-  position:absolute;
-  left:0;
-  top:0;
-
-}.imgservice div{
-  position:relative;
-  z-index:98;
-  margin:auto;
-}
 
 
-.imgservice canvas{
-  z-index:98;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
+
+//responsive
+@media only screen and (max-width: @screen-sm-max){
+  .imgserviceopen, .imgservice{
+      display: none;
+  }
 }

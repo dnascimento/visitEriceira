@@ -1,0 +1,10 @@
+<div id="menu" class="container clearfix" >
+    <div class="col-md-3" ng-repeat="option in menu">
+            <a class="btnmenu rotate-In-Down-Left animate1" du-smooth-scroll du-scrollspy ng-href="{{ option.href }}">
+                <p class="{{ option.color }}">
+                    <img ng-src="{{ option.img }}"/><br>
+                    <span ng-bind-html="option.text"></span>
+                </p>
+            </a>
+    </div>
+</div>

@@ -30,6 +30,8 @@ module.exports = {
 				'public/lib/lodash/dist/lodash.min.js',
 				'public/lib/angular-google-maps/dist/angular-google-maps.min.js',
 				'public/lib/angular.easy-pie-chart/dist/angular.easypiechart.min.js',
+				'public/lib/angular-masonry/angular-masonry.js',
+				'public/lib/angular-scroll/angular-scroll.min.js'
 			]
 		},
 		css: [

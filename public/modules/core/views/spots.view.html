@@ -1,12 +1,14 @@
-<div class="container clearfix">
-    <div class="grid_12">
-        <div class="titlesection">
-            <h1>Surf Spots</h1>
-        </div>
+<div class="divider"><span></span></div>
+
+<div class="col-md-12">
+    <div class="titlesection">
+        <h1>Surf Spots</h1>
     </div>
+</div>
 
 
-    <div style="100%; height:500px" class="col-md-2">
+<div id="spots" class="container">
+    <div class="col-md-2 col-lg-2 col-sm-12 col-xs-12">
         <ui-gmap-google-map center='map.center' zoom='map.zoom' options="map.options">
             <ui-gmap-markers models="randomMarkers" coords="'self'" icon="'icon'" click="'onClick'">
                 <!--<ui-gmap-windows show="{{ show }}">-->
@@ -18,39 +20,34 @@
     </div>
 
 
-    <div class="col-md-10">
-        <div class="hometour hometour-0 blue fade-down animate1" >
-            <div class="tophometour">
-                <p class="titlehometour" ng-if="wave === undefined">Choose a spot in the map</p>
-                <p class="titlehometour" ng-if="wave != undefined">{{ wave.name }}</p>
-                <div class="titleimghometour" ng-if="wave != undefined">
-                    <img alt="" class="imghometour" ng-src="/modules/core/img/spots/{{ wave.img }}">
-                </div>
-                <div class="datedescriptionhometour" ng-if="wave != undefined">
-                    <div class="descriptionhometour">
-                        {{ wave.description }}
+    <div class="col-md-10 col-lg-10 col-sm-12 col-xs-12">
+        <div class="spots">
+            <!-- start top -->
+            <div class="top">
+                <p class="title" ng-if="wave === undefined">Choose a spot in the map</p>
+                <p class="title" ng-if="wave != undefined">{{ wave.name }}</p>
+
+                <div class="img-and-description">
+                    <img alt="" ng-src="/modules/core/img/spots/{{ wave.img }}" ng-if="wave != undefined">
+                    <div class="description"  ng-if="wave != undefined">
+                        <div>
+                            <p>{{ wave.description }}</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <!--start bottomhometour-->
-            <div class="bottomhometour" ng-if="wave != undefined">
 
-                <!--start listhometour-->
-                <div class="listhometour">
+
+            <!--start bottom-->
+            <div class="bottom" ng-if="wave != undefined">
+                <div class="list">
                     <ul>
                         <li ng-repeat="(key, value) in wave.type">
-                            <p><span class="bulletlisthometour"></span><b>{{ key }}: </b>{{ value }}</p>
+                            <p><span class="bullet"></span><b>{{ key }}: </b>{{ value }}</p>
                         </li>
                     </ul>
                 </div>
-                <!--end listhometour-->
-
             </div>
-            <!--end bottomhometour-->
-
         </div>
-        <!--END HOME TOUR-->
-
     </div>
-    <!--end grid-->
 </div>

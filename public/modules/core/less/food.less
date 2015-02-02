@@ -1,101 +1,98 @@
 @import "public/less/variables.less";
+@import "public/lib/bootstrap/less/variables.less";
 
 .show-biz{
-  background-color:#fff;
+  background-color:@white;
   -webkit-box-shadow: inset 0px 0px 0px 1px rgba(244, 244, 246, 1.0);
   box-shadow: inset 0px 0px 0px 1px rgba(244, 244, 246, 1.0);
   float:left;
+
+  .owl-item{
+    border: 1px solid #A0A0A0;
+  }
+
+  img{
+    width:100%;
+    height: 200px;
+    float:left;
+  }
+
+  .show-biz-title{
+    width:100%;
+    float:left;
+
+    p{
+      background-color:#344A5F;
+      width:100%;
+    }
+
+    a{
+      font-size:13px;
+      color:#B1BAC3;
+      padding:10px 20px;
+      display:block;
+    }
+  }
+
+  .avatar{
+    float:left;
+    width:74px;
+    height:74px;
+    margin:-50px 20px 5px 20px;
+    border:3px solid #fff;
+
+    border-radius:40px;
+    -moz-border-radius:40px;
+    -webkit-border-radius:40px;
+
+    img{
+      width:74px;
+      height:74px;
+      overflow:hidden;
+
+      border-radius:40px;
+      -moz-border-radius:40px;
+      -webkit-border-radius:40px;
+    }
+  }
+
+  .description{
+    text-align: justify;
+    font-size: 13px;
+    margin: 10px;
+    float:left;
+    height: 100px;
+  }
+
 }
 
-.show-biz .owl-item{
-  border: 1px solid #A0A0A0;
+
+.arrow{
+  z-index: 100;
+  cursor: pointer;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  top: -250px;
+
+  &:hover{
+    background-position: bottom left !important;
+  }
+
+  &.prev{
+    float:left;
+    background: url(/modules/core/img/showbiz/large_left.png) no-repeat 0 0;
+  }
+  &.next{
+    float:right;
+    background: url(/modules/core/img/showbiz/large_right.png) no-repeat 0 0;
+  }
 }
 
-.show-biz .show-biz-main-img{
-  width:100%;
-  height:auto;
-  float:left;
+//hide arrows on touchscreens
+@media only screen and (max-width: @screen-sm-max) {
+  .arrow-prev, .arrow-next{
+    display:none;
+  }
 }
-.show-biz .show-biz-title{
-  background-color:#C9F;
-  width:100%;
-  float:left;
-}
-
-.show-biz .avatar{
-  float:left;
-  width:74px;
-  height:74px;
-  margin:-50px 20px 5px 20px;
-  border:3px solid #fff;
-
-  border-radius:40px;
-  -moz-border-radius:40px;
-  -webkit-border-radius:40px;
-}
-
-.show-biz .avatar img{
-  width:74px;
-  height:74px;
-  overflow:hidden;
-
-  border-radius:40px;
-  -moz-border-radius:40px;
-  -webkit-border-radius:40px;
-}
-
-.show-biz .show-biz-title p{
-  background-color:#344A5F;
-  width:100%;
-}
-
-.show-biz .show-biz-title a{
-  font-size:15px;
-  color:#B1BAC3;
-  padding:10px 20px;
-  display:block;
-}
-
-
-
-.show-biz .description{
-  text-align:center;
-  font-size:15px;
-  margin:20px;
-  float:left;
-}
-
-
-.infodestination{
-  background-color:#f9fafc;
-  float:left;
-  width:100%;
-
-  -webkit-box-shadow: inset 0px 0px 0px 1px rgba(235, 236, 240, 1.0);
-  box-shadow: inset 0px 0px 0px 1px rgba(235, 236, 240, 1.0);
-}
-
-.arrow-prev{
-  width:40px;
-  height:40px;
-  cursor:pointer;
-  margin-bottom:20px;
-  float:right;
-  background-image:url(/modules/core/img/showbiz/arrowPrev.png);
-  background-repeat:no-repeat;
-  background-color: @red;
-}
-.arrow-next{
-  width:40px;
-  height:40px;
-  cursor:pointer;
-  margin-bottom:20px;
-  float:left;
-  background-image:url(/modules/core/img/showbiz/arrowNext.png);
-  background-repeat:no-repeat;
-  background-color: @red;
-}
-.notclickable{
-  cursor:text;
-}
-

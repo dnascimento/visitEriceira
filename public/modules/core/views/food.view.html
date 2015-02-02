@@ -1,4 +1,4 @@
-<div class="container">
+<div  id="food" class="container">
     <div class="col-md-12">
         <div class="titlesection">
             <h1>The Delicious Portuguese Food</h1>
@@ -9,10 +9,10 @@
     <div has-owl-carousel>
         <div class="owl-carousel owl-theme show-biz">
             <div class="item" ng-repeat="dish in dishes">
-                <img alt="" class="show-biz-main-img" ng-src="/modules/core/img/dishes/{{ dish.img }}">
+                <img alt="" ng-src="{{ dish.img }}">
                 <div class="show-biz-title">
                     <div class="avatar">
-                        <img alt="" ng-src="/modules/core/img/dishes/sponsors/{{ dish.sponsor }}">
+                        <img alt="" ng-src="{{ dish.sponsor }}">
                     </div>
                     <p>
                         <a ng-href="{{ dish.href }}">{{ dish.name }}</a>
@@ -23,10 +23,10 @@
             <!--<img class="lazyOwl" ng-src="/modules/core/img/dishes/{{ dish.img }}" alt="Lazy Owl Image">-->
         </div>
         <div class="col-md-6">
-            <div class="arrow-prev animated fadeInRight" ng-click="prev()"></div>
+            <div class="arrow prev" ng-click="prev()"></div>
         </div>
         <div class="col-md-6">
-            <div class="arrow-next animated fadeInLeft" ng-click="next()"></div>
+            <div class="arrow next" ng-click="next()"></div>
         </div>
     </div>
 </div>

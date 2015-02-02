@@ -1,10 +1,12 @@
 @import "public/less/variables.less";
+@import "public/lib/bootstrap/less/variables.less";
+
 
 
 .lesson{
   float:left;
   margin: 10px 5px 5px 5px;
-  background-color:#fff;
+  background-color: @white;
 
   -webkit-box-shadow: inset 0px 0px 0px 1px #F4F4F6;
   box-shadow: inset 0px 0px 0px 1px #F4F4F6;
@@ -15,112 +17,131 @@
   float:left;
   width:50%;
   position:relative;
-}
-.imgleft-lesson{
-  width:100%;
-  float:left;
-}
-.pricetitleleft-lesson{
-  float:left;
-  position:absolute;
-  bottom:-10px;
-  width:100%;
-}
-.titleleft-lesson{
-  padding:10px;
-  background-color:#344A5F;
-  color:#B1BAC3;
-  font-size:15px;
-  margin-top:25px;
-  margin-bottom:25px;
-}
-.priceleft-lesson{
-  border:2px solid #fff;
-  float:left;
-  margin:0px 20px 0px 20px;
-  border-radius:100px;
-}
-.priceleft-lesson p{
-  width:90px;
-  height:90px;
-  font-size:25px;
-  color:#Fff;
-  text-align:center;
-  line-height:90px;
-  font-weight:400;
-}
 
+  img{
+    width:100%;
+    float:left;
+  }
 
+  .title-and-price{
+    float:left;
+    position:absolute;
+    bottom:-10px;
+    width:100%;
+
+    .price{
+      border:2px solid #fff;
+      float:left;
+      margin:0px 20px 0px 20px;
+      border-radius:100px;
+
+      p{
+        width:90px;
+        height:90px;
+        font-size:25px;
+        color:#Fff;
+        text-align:center;
+        line-height:90px;
+        font-weight:400;
+        @media (max-width: @screen-sm-max) {
+          width: 45px;
+          height: 45px;
+          font-size: 15px;
+          line-height: 45px;
+          font-weight: 200;
+        }
+      }
+    }
+
+    .title{
+      padding:10px;
+      background-color:#344A5F;
+      color:#B1BAC3;
+      font-size:15px;
+      margin-top:25px;
+      margin-bottom:25px;
+      @media (max-width: @screen-sm-max) {
+        font-size: 10px;
+      }
+    }
+  }
+}
 
 .right-lesson{
   float:left;
   width:50%;
-}
-.titleday-lesson{
-  background-color:#F9FAFC;
-  float:left;
-  width:100%;
 
-  -webkit-box-shadow: inset 0px 0px 0px 1px rgba(244, 244, 246, 1.0);
-  box-shadow: inset 01px 0px 0px 1px rgba(244, 244, 246, 1.0);
-}
-.day-lesson{
-  background-color:#f0f1f5;
-  padding:10px 20px;
-  float:right;
-  text-align:center;
-  line-height:1;
-}
-.day-lesson p{
-  font-size:25px;
-  color:#5E6D81;
-}
-.day-lesson span{
-  color:#5E6D81;
-  font-size:10px;
-}
-.title-lesson{
-  padding:20px;
-  float:left;
-}
-.descriptionicons-lesson{
-  float:left;
-  width:100%;
-}
-.description-lesson{
-  padding:20px;
-  font-size:15px;
-}
-.icons-lesson{
-  float:left;
-  width:100%;
-  margin:0px 10px 10px 10px;
-}
+  .title-and-day{
+    background-color: @lightGray;
+    float:left;
+    width:100%;
 
-.icons-lesson .tooltip{
-  display: inline;
-}
-
-.icons-lesson img{
-  margin:0px 10px 10px 10px;
-  float:left;
-}
-.icons-lesson a{
-  float:left;
-}
+    -webkit-box-shadow: inset 0px 0px 0px 1px rgba(244, 244, 246, 1.0);
+    box-shadow: inset 01px 0px 0px 1px rgba(244, 244, 246, 1.0);
 
 
-.grid_5 .left-lesson,.grid_5 .right-lesson{
-  width:100%;
-}
-.grid_4 .left-lesson,.grid_4 .right-lesson{
-  width:100%;
-}
-.grid_3 .left-lesson,.grid_3 .right-lesson{
-  width:100%;
+    .title{
+      padding:20px;
+      float:left;
+      @media (max-width: @screen-sm-max) {
+        font-size: 15px;
+      }
+    }
+
+    .day{
+      background-color:#f0f1f5;
+      padding:10px 20px;
+      float:right;
+      text-align:center;
+      line-height:1;
+
+      p{
+        font-size:25px;
+        color:#5E6D81;
+        @media (max-width: @screen-sm-max) {
+          font-size: 13px;
+        }
+      }
+
+      span{
+        color:#5E6D81;
+        font-size:10px;
+      }
+    }
+  }
+
+
+  .description-and-icons{
+    float:left;
+    width:100%;
+
+    .description{
+      padding:20px;
+      font-size:15px;
+      @media (max-width: @screen-sm-max) {
+        font-size: 13px;
+      }
+    }
+
+    .icons{
+      float:left;
+      width:100%;
+      margin:0px 10px 10px 10px;
+
+      img{
+        margin:0px 10px 10px 10px;
+        float:left;
+      }
+
+      a{
+        float:left;
+      }
+    }
+  }
 }
 
 
-.yellow .priceleft-lesson{
-  background-color: @yellow;
-}
+
+
+
+

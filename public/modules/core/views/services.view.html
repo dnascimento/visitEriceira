@@ -1,16 +1,16 @@
-<div class="sectionhome fade-up" id="homeservices">
+<div id="services">
     <div class="container clearfix">
-        <div class="col-md-4" ng-repeat="service in services">
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" ng-repeat="service in services">
             <div class="homeservice">
                 <div class="imgserviceopen">
-                    <img alt="" ng-src="/modules/core/img/services/{{ service.imgOpen }}" />
+                    <img alt="" ng-src="{{ service.imgOpen }}" />
                 </div>
                 <div class="imgservice">
                     <div easypiechart percent="service.percent" options="options">
-                        <img alt="" ng-src="/modules/core/img/services/{{ service.img }}" />
+                        <img alt="" ng-src="{{ service.img }}" />
                     </div>
                 </div>
-                <h2><a ng-href="{{ service.href }}">{{ service.title }}</a></h2>
+                <h2><a ng-href="{{ service.href }}" du-smooth-scroll du-scrollspy>{{ service.title }}</a></h2>
                 <p>{{ service.description }}</p>
             </div>
         </div>

@@ -1,31 +1,41 @@
-<div class="container">
+<div class="divider"><span></span></div>
+
+<div class="col-md-12">
+    <div class="titlesection">
+        <h1>Surfing Lessons</h1>
+    </div>
+</div>
+
+<div id="surf_lessons" class="container">
     <div class="col-md-6" ng-repeat="lesson in lessons">
         <!--start left-->
-        <div class="lesson fade-left animate1 {{ lesson.color}}">
+        <div class="lesson fade-left animate1">
             <div class="left-lesson">
-                <a href="{{ lesson.href }}"><img alt="" class="imgleft-lesson opacity" ng-src="/modules/core/img/surf/{{ lesson.img }}"></a>
-                <div class="pricetitleleft-lesson">
-                    <div class="priceleft-lesson">
+                <a href="{{ lesson.href }}">
+                    <img alt="" class="opacity" ng-src="/modules/core/img/surf/{{ lesson.img }}">
+                </a>
+                <div class="title-and-price">
+                    <div class="price  {{ lesson.color}}" >
                         <p>{{ lesson.price }}</p>
                     </div>
-                    <p class="titleleft-lesson">{{ lesson.title }}</p>
+                    <p class="title">{{ lesson.title }}</p>
                 </div>
             </div>
             <!--end left-->
 
             <!--right-->
             <div class="right-lesson">
-                <div class="titleday-lesson">
-                    <a href="single-project.html"><p class="title-lesson">{{ lesson.descriptionTitle }}</p></a>
-                    <div class="day-lesson">
+                <div class="title-and-day">
+                    <a ng-href="{{ lesson.href }}"><p class="title">{{ lesson.descriptionTitle }}</p></a>
+                    <div class="day">
                         <p>{{ lesson.durationTop }}</p>
                         <span>{{ lesson.durationUnit }}</span>
                     </div>
                 </div>
 
-                <div class="descriptionicons-lesson">
-                    <p class="description-lesson">{{ lesson.description }}</p>
-                    <p class="icons-lesson">
+                <div class="description-and-icons">
+                    <p class="description">{{ lesson.description }}</p>
+                    <p class="icons">
                         <a title="{{ icon.title }}" href="{{ icon.href }}" ng-repeat="icon in lesson.icons">
                             <img alt="" ng-src="/modules/core/img/surf/icon/{{ icon.img }}">
                         </a>
