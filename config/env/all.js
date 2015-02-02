@@ -16,7 +16,6 @@ module.exports = {
 				'public/lib/owl-carousel2/dist/assets/owl.carousel.min.css'
 			],
 			js: [
-				'public/lib/angular.easy-pie-chart/dist/angular.easypiechart.min.js',
 				'public/lib/angular/angular.js',
 				'public/lib/angular-resource/angular-resource.js', 
 				'public/lib/angular-cookies/angular-cookies.js', 
@@ -29,7 +28,8 @@ module.exports = {
 				'public/lib/jquery/dist/jquery.min.js',
 				'public/lib/owl-carousel2/dist/owl.carousel.min.js',
 				'public/lib/lodash/dist/lodash.min.js',
-				'public/lib/angular-google-maps/dist/angular-google-maps.min.js'
+				'public/lib/angular-google-maps/dist/angular-google-maps.min.js',
+				'public/lib/angular.easy-pie-chart/dist/angular.easypiechart.min.js',
 			]
 		},
 		css: [
