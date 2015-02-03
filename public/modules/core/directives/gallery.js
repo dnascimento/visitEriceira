@@ -29,25 +29,6 @@ core.directive('gallery',function(){
 
             $scope.selectFilter = function($selectedFilter){
                 $scope.selectedFilter = $selectedFilter;
-
-            }
-
-            $scope.openFancyBox = function () {
-                $('.fancybox-thumbs').fancybox({
-                    prevEffect : 'none',
-                    nextEffect : 'none',
-
-                    closeBtn  : true,
-                    arrows    : true,
-                    nextClick : true,
-
-                    helpers : {
-                        thumbs : {
-                            width  : 50,
-                            height : 50
-                        }
-                    }
-                });
             }
         }
     };

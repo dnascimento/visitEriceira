@@ -7525,36 +7525,36 @@ a img {
 .green {
   background-color: #4ab471;
 }
-.slider {
+.slider.carousel {
   width: 100%;
+  /** In **/
+  /** Out **/
 }
-.slider img {
+.slider.carousel img {
   position: absolute;
   width: 100%;
 }
-.slider .ng-enter,
-.slider .ng-leave {
+.slider.carousel .ng-enter,
+.slider.carousel .ng-leave {
   -webkit-transition: 500ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
   -moz-transition: 500ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
   -ms-transition: 500ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
   -o-transition: 500ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
   transition: 500ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
 }
-/** In **/
-.slider .ng-leave {
+.slider.carousel .ng-leave {
   left: 100%;
   /** hidden right **/
 }
-.slider .ng-enter.ng-enter-active {
+.slider.carousel .ng-enter.ng-enter-active {
   left: 0;
   /** correct position **/
 }
-/** Out **/
-.slider .ng-leave {
+.slider.carousel .ng-leave {
   left: 0;
   /** correct position **/
 }
-.slider .ng-leave.ng-leave-active {
+.slider.carousel .ng-leave.ng-leave-active {
   left: -100%;
   /** hidden left **/
 }
@@ -7615,10 +7615,41 @@ a img {
   color: #5e6d81;
   height: 200px;
 }
-#spots .top .img-and-description img {
+#spots .top .img-and-description .img {
+  width: 50%;
   float: left;
   height: 100%;
-  width: 50%;
+}
+#spots .top .img-and-description .img .slider {
+  height: 100% !important;
+  /** in **/
+  /** out **/
+}
+#spots .top .img-and-description .img .slider img {
+  position: absolute;
+  float: left;
+  height: 100%;
+  width: 100%;
+}
+#spots .top .img-and-description .img .slider .ng-enter,
+#spots .top .img-and-description .img .slider .ng-leave {
+  -webkit-transition: opacity 2s ease-in-out;
+  -moz-transition: opacity 2s ease-in-out;
+  -o-transition: opacity 2s ease-in-out;
+  transition: opacity 2s ease-in-out;
+}
+#spots .top .img-and-description .img .slider .ng-enter.ng-enter-active {
+  opacity: 1;
+}
+#spots .top .img-and-description .img .slider .ng-enter,
+#spots .top .img-and-description .img .slider .ng-leave.ng-leave-active {
+  left: 0;
+  /** correct position **/
+  opacity: 0;
+}
+#spots .top .img-and-description .img .slider .ng-leave.ng-leave-active {
+  left: 0;
+  /** hidden left **/
 }
 #spots .top .img-and-description .description {
   overflow: scroll;

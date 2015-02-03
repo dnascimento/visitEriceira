@@ -27,9 +27,12 @@
                 <p class="title" ng-if="wave === undefined">Choose a spot in the map</p>
                 <p class="title" ng-if="wave != undefined">{{ wave.name }}</p>
 
-                <div class="img-and-description">
-                    <img alt="" ng-src="/modules/core/img/spots/{{ wave.img }}" ng-if="wave != undefined">
-                    <div class="description"  ng-if="wave != undefined">
+                <div class="img-and-description"  ng-if="wave != undefined">
+                    <div class="img" fancyboxer fancyboxer-images="wave.imgs">
+                        <slider speed="5000" width="1280" height="500" preview="true" slides="wave.imgs"></slider>
+                    </div>
+
+                    <div class="description">
                         <div>
                             <p>{{ wave.description }}</p>
                         </div>

@@ -317,14 +317,14 @@ core.controller('HomeController',
 
 		var reef = {
 			name: 'Reef',
-			img : 'tour1.png',
+			imgs : ['tour1.png','tour2.jpg','tour1.png'],
 			description: 'Continuing along Empa Beach, which is bordered by a small cliff, 300 metres to the north we find Pedra Branca’s twin beach and a wave called Reef. This right is formed from a very flat reef shelf which starts on land and gets deeper as it stretches NW. This is another regular, dangerous wave that has a very short, fast take-off zone followed by a barrel that ends exactly on the exposed shelf on the surface on the inside. It only works with N to NW swells at mid tide',
 			type: {'Type': 'Rapid, powerful barrel right', 'Type of seabed':'Reef', 'Tide conditions' :'Mid tide', 'Sweel conditions' : 'NW/N', 'Wind conditions':'SE to NE', 'Consistency': '++', 'Break angle' : '35º', 'Length of break line': '30 to 70 meters', 'Wave height':'0.5 to 1.5 meters', 'Type of break': 'Plunging', 'Level' : '6'}
 		};
 
 		var ribeira = {
 			name: 'Ribeira D\'Ilhas',
-			img : 'tour1.png',
+			imgs : ['tour1.png','tour2.jpg','tour1.png'],
 			description: 'If we walk 500 metres north, we come across the most memorable and cosmopolitan of all the waves in the reserve. Located in a valley with a sandy beach in the centre where a stream flows into the sea, it is shaped like a natural amphitheatre, which is perfect for surfing events. It is no surprise that it was the venue for the first national and international championships in Portugal. Ribeira d`Ilhas is a long pointbreak right, meaning that the waves follow the contour of the shore, which receives all types of swells and works in all kinds of tide. It is the most consistent wave in the region. Ribeira d’Ilhas and its W/NW swells can provide rights up to 200 metres long. It is a very valuable, competitive wave as it allows surfers very different levels of approach.',
 			type: {'Type': 'Long right', 'Type of seabed':'Rocks and reef', 'Tide conditions' :'All tides', 'Sweel conditions' : 'All (best on W/NW)', 'Wind conditions':'Any quadrand (best from SE to NE)', 'Consistency': '+ + + + +', 'Break angle' : '55º', 'Length of break line': '150 to 300 meters', 'Wave height':'0.5 to 3.5 meters', 'Type of break': 'Progressive/Plunging', 'Level' : '4'}
 		};
@@ -352,18 +352,17 @@ core.controller('HomeController',
 ;
 'use strict';
 
-var core = angular.module('core');
-
-core.directive('bannerSponsors', function(){
-    return  {
-        restrict: 'E',
-        replace: true,
-        templateUrl: '/modules/core/views/sponsors.view.html',
-        scope:{
-            sponsors : '='
-        }
-    };
-});
+angular.module('core').
+    directive('bannerSponsors', function(){
+        return  {
+            restrict: 'E',
+            replace: true,
+            templateUrl: '/modules/core/views/sponsors.view.html',
+            scope:{
+                sponsors : '='
+            }
+        };
+    });
 
 ;
 'use strict';
@@ -403,6 +402,42 @@ core.directive('hasOwlCarousel', function() {
 ;
 'use strict';
 
+angular.module('core').
+    directive('fancyboxer', function(){
+        return  {
+            restrict: 'A',
+            scope:{
+                sponsors : '='
+            },
+            link: function($scope,element) {
+                var refs = $(element).find('a').addClass('fancybox-thumbs');
+                refs.attr('rel','fancybox-thumbs');
+
+                var openFancyBox = function () {
+                    $(element).parent().find('a.fancybox-thumbs').fancybox({
+                        prevEffect: 'none',
+                        nextEffect: 'none',
+
+                        closeBtn: true,
+                        arrows: true,
+                        nextClick: true,
+
+                        helpers: {
+                            thumbs: {
+                                width: 50,
+                                height: 50
+                            }
+                        }
+                    });
+                }
+                refs.bind('click', openFancyBox);
+            }
+        };
+    });
+
+;
+'use strict';
+
 var core = angular.module('core');
 
 core.filter('galleryFilter',function() {
@@ -432,25 +467,6 @@ core.directive('gallery',function(){
 
             $scope.selectFilter = function($selectedFilter){
                 $scope.selectedFilter = $selectedFilter;
-
-            }
-
-            $scope.openFancyBox = function () {
-                $('.fancybox-thumbs').fancybox({
-                    prevEffect : 'none',
-                    nextEffect : 'none',
-
-                    closeBtn  : true,
-                    arrows    : true,
-                    nextClick : true,
-
-                    helpers : {
-                        thumbs : {
-                            width  : 50,
-                            height : 50
-                        }
-                    }
-                });
             }
         }]
     };
@@ -469,7 +485,9 @@ core.directive('slider',["$interval", "$window", function($interval,$window){
         scope: {
             slides: '=',
             speed: '@',
-            dir : '@'
+            dir : '@',
+            width: '@',
+            height: '@'
         },
 
         controller: ["$scope", function($scope){
@@ -486,13 +504,12 @@ core.directive('slider',["$interval", "$window", function($interval,$window){
             },$scope.speed);
         }],
         link: function ($scope,element,attrs){
-
             var resize = function(windowWidth) {
                 if($(element).children().length == 0){
                     return 0;
                 }
-                var naturalWidth = $(element).attr("width");
-                var naturalHeight = $(element).attr("height");
+                var naturalWidth = $scope.width;
+                var naturalHeight = $scope.height;
 
                 var newHeight = Math.round(windowWidth * (naturalHeight/naturalWidth));
                 $(element).height(newHeight);

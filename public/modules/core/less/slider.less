@@ -1,35 +1,37 @@
 @import "public/less/variables.less";
 
-.slider{
+.slider.carousel{
 	width: 100%;
-}
 
-
-.slider img{
+  img{
 	position: absolute;
 	width:100%;
-}
+  }
 
-.slider .ng-enter, .slider .ng-leave {
+  .ng-enter, .ng-leave {
 	-webkit-transition: @slideSpeed cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
 	-moz-transition: @slideSpeed cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
 	-ms-transition: @slideSpeed cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
 	-o-transition: @slideSpeed cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
 	transition: @slideSpeed cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-}
+  }
 
-/** In **/
-.slider .ng-leave {
+  /** In **/
+  .ng-leave {
 	left: 100%; /** hidden right **/
-}
-.slider .ng-enter.ng-enter-active {
+  }
+  .ng-enter.ng-enter-active {
 	left: 0;  /** correct position **/
+  }
+
+  /** Out **/
+  .ng-leave {
+	left: 0; /** correct position **/
+  }
+  .ng-leave.ng-leave-active{
+	left: -100%; /** hidden left **/
+  }
 }
 
-/** Out **/
-.slider .ng-leave {
-	left: 0; /** correct position **/
-}
-.slider .ng-leave.ng-leave-active{
-	left: -100%; /** hidden left **/
-}
+
+

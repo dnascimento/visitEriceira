@@ -1,6 +1,7 @@
 <section ng-controller="HomeController">
-	<slider dir="/modules/core/img/slider/" speed="3000" slides="['img1.jpg', 'img2.jpg', 'img3.jpg']"></slider>
-
+	<div fancyboxer fancyboxer-images="slides">
+		<slider speed="3000" width="1280" height="500" slides="slides"></slider>
+	</div>
 	<div ng-include="'/modules/core/views/services.view.html'"></div>
 	<div ng-include="'/modules/core/views/menu.view.html'"></div>
 	<div class="divider"><span></span></div>

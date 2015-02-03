@@ -25,11 +25,45 @@
       color: @hoverBlue;
 
       height: 200px; //TODO: responsive
-      img {
+
+      .img {
+        width: 50%;
         float: left;
         height: 100%;
-        width: 50%;
+
+        .slider {
+          height: 100% !important;
+
+          img {
+            position: absolute;
+            float: left;
+            height: 100%;
+            width: 100%;
+          }
+
+          .ng-enter, .ng-leave {
+            -webkit-transition: opacity 2s ease-in-out;
+            -moz-transition: opacity 2s ease-in-out;
+            -o-transition: opacity 2s ease-in-out;
+            transition: opacity 2s ease-in-out;
+          }
+
+          /** in **/
+          .ng-enter.ng-enter-active {
+            opacity: 1;
+          }
+          /** out **/
+          .ng-enter, .ng-leave.ng-leave-active {
+            left: 0; /** correct position **/
+            opacity: 0;
+          }
+
+          .ng-leave.ng-leave-active {
+            left: 0; /** hidden left **/
+          }
+        }
       }
+
 
       .description {
         overflow: scroll;
@@ -82,9 +116,16 @@
         margin: 5px 10px 10px 0px;
         border: 2px solid @blue;
       }
-
     }
   }
+
+
+
+
+
+
+
+
 }
 
 

@@ -19,6 +19,12 @@ core.controller('HomeController',
 		$scope.authentication = Authentication;
 
 
+		$scope.slides = [
+			'/modules/core/img/slider/img1.jpg',
+			'/modules/core/img/slider/img2.jpg',
+			'/modules/core/img/slider/img3.jpg'
+		];
+
 		//service (3 round balls) - start
 		$scope.percent = 65;
 		$scope.options = {
@@ -226,19 +232,23 @@ core.controller('HomeController',
 		});
 
 
+		var wavesDir = '/modules/core/img/spots/';
+
 		var reef = {
 			name: 'Reef',
-			img : 'tour1.png',
+			imgs : [wavesDir+'tour1.png', wavesDir+'tour2.jpg', wavesDir+'tour1.png'],
 			description: 'Continuing along Empa Beach, which is bordered by a small cliff, 300 metres to the north we find Pedra Branca’s twin beach and a wave called Reef. This right is formed from a very flat reef shelf which starts on land and gets deeper as it stretches NW. This is another regular, dangerous wave that has a very short, fast take-off zone followed by a barrel that ends exactly on the exposed shelf on the surface on the inside. It only works with N to NW swells at mid tide',
 			type: {'Type': 'Rapid, powerful barrel right', 'Type of seabed':'Reef', 'Tide conditions' :'Mid tide', 'Sweel conditions' : 'NW/N', 'Wind conditions':'SE to NE', 'Consistency': '++', 'Break angle' : '35º', 'Length of break line': '30 to 70 meters', 'Wave height':'0.5 to 1.5 meters', 'Type of break': 'Plunging', 'Level' : '6'}
 		};
 
 		var ribeira = {
 			name: 'Ribeira D\'Ilhas',
-			img : 'tour1.png',
+			imgs : [wavesDir+'tour1.png', wavesDir+'tour2.jpg', wavesDir+'tour1.png'],
 			description: 'If we walk 500 metres north, we come across the most memorable and cosmopolitan of all the waves in the reserve. Located in a valley with a sandy beach in the centre where a stream flows into the sea, it is shaped like a natural amphitheatre, which is perfect for surfing events. It is no surprise that it was the venue for the first national and international championships in Portugal. Ribeira d`Ilhas is a long pointbreak right, meaning that the waves follow the contour of the shore, which receives all types of swells and works in all kinds of tide. It is the most consistent wave in the region. Ribeira d’Ilhas and its W/NW swells can provide rights up to 200 metres long. It is a very valuable, competitive wave as it allows surfers very different levels of approach.',
 			type: {'Type': 'Long right', 'Type of seabed':'Rocks and reef', 'Tide conditions' :'All tides', 'Sweel conditions' : 'All (best on W/NW)', 'Wind conditions':'Any quadrand (best from SE to NE)', 'Consistency': '+ + + + +', 'Break angle' : '55º', 'Length of break line': '150 to 300 meters', 'Wave height':'0.5 to 3.5 meters', 'Type of break': 'Progressive/Plunging', 'Level' : '4'}
 		};
+
+
 
 		$scope.waves = {
 			'reef' : reef,
@@ -249,12 +259,12 @@ core.controller('HomeController',
 		$scope.filters = ['ALL', 'Surf', 'Ericeira', 'Nearby'];
 
 		$scope.gallery = [
-			{img: 'img1.jpg', title:'Surf 1', filter: 'Surf'},
-			{img: 'img2.jpg', title:'Surf 1', filter: 'Surf'},
-			{img: 'img3.jpg', title:'Ericeira 1', filter: 'Ericeira'},
-			{img: 'img4.jpg', title:'Ericeira 2', filter: 'Ericeira'},
-			{img: 'img5.jpg', title:'Nearby 1', filter: 'Nearby'},
-			{img: 'img6.jpg', title:'Nearby 2', filter: 'Nearby'},
+			{href: '/modules/core/img/gallery/small/img1.jpg', title:'Surf 1', filter: 'Surf'},
+			{href: '/modules/core/img/gallery/small/img2.jpg', title:'Surf 1', filter: 'Surf'},
+			{href: '/modules/core/img/gallery/small/img3.jpg', title:'Ericeira 1', filter: 'Ericeira'},
+			{href: '/modules/core/img/gallery/small/img4.jpg', title:'Ericeira 2', filter: 'Ericeira'},
+			{href: '/modules/core/img/gallery/small/img5.jpg', title:'Nearby 1', filter: 'Nearby'},
+			{href: '/modules/core/img/gallery/small/img6.jpg', title:'Nearby 2', filter: 'Nearby'},
 		]
 
 
